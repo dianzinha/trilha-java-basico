@@ -8,18 +8,20 @@ public class ContaBancaria {
         int opcao = 0;
         double saldo = 0;
 
-        System.out.print("Entre com o nome do titular da conta: ");
+        System.out.print("Nome do titular da conta: ");
         String titularConta = entrada.nextLine();
         System.out.print("Entre com o tipo da conta: ");
         String tipoConta = entrada.nextLine();
 
-
-        System.out.println("\nNome:" + titularConta);
-        System.out.println("Tipo da Conta:" + tipoConta);
+        StringBuilder dadosConta = new StringBuilder();
+        dadosConta.append("\n")
+                        .append("Nome:" + titularConta)
+                                .append("\nTipo da Conta:" + tipoConta);
+        System.out.println(dadosConta.toString());
         System.out.println("---");
         System.out.println("Saldo atual: R$ " + saldo);
-        System.out.println("--------------");
-        System.out.println(" ");
+        System.out.println("--------------\n");
+
 
         while(opcao != 4) {
 
@@ -48,14 +50,10 @@ public class ContaBancaria {
                 System.out.print("Digite o valor a transferir: ");
                 double valorTransf = entrada.nextDouble();
 
-                while (valorTransf > saldo) {
+                if (valorTransf > saldo) {
 
-                    System.out.println("Não é possivel transferir o saldo não é suficiente!");
-                    System.out.print("Digite novamente o valor: ");
-                    valorTransf = entrada.nextDouble();
-                    System.out.println(" ");
+                    System.out.println("Não é possivel transferir, pois o saldo não é suficiente!");
                 }
-                saldo = saldo - valorTransf;
 
             } else if (opcao == 4) {
                 System.out.println("Finalizando o programa!");
